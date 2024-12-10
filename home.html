@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bus Booking System</title>
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+            integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+            crossorigin="anonymous"
+    />
+</head>
+<body>
+<!--//Navbar boottstrap class -->
+<nav class="navbar navbar-dark bg-dark navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <h1 style="color: white">Find Doctors</h1>
+        </div>
+    </div>
+</nav>
+<section>
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <a
+                        th:href="@{/prescription}"
+                        class="btn btn-info btn-sm mb-3">View Prescription</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header bg-success text-center fs-4">Find Your Doctor</div>
+
+            <div class="card-body">
+                <table class="table">
+                    <thead class=" " style="font-size:large; text-align:center;">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Doctor Name</th>
+                        <th scope="col">Specialization</th>
+                        <th scope="col">Available Time</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="e,c:${doctor}">
+                        <th scope="row">[[${c.count}]]</th>
+                        <td>[[${e.doctorName}]]</td>
+                        <td>[[${e.specialization}]]</td>
+                        <td>[[${e.availableTime}]]</td>
+                        <td>[[${e.email}]]</td>
+                        <td>
+                            <a th:href="@{showFormBook/{id}}"
+                               class="btn btn-sm btn-primary">Book</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+
+
+
+
+
